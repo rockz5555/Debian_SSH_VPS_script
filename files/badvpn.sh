@@ -46,5 +46,7 @@ EOF
 systemctl enable badvpn.service
 systemctl start badvpn.service
 
+clear
+
 echo "BadVPN has been installed to $INSTALL_PATH and set up to run at boot."
 echo "You can start it manually using: $INSTALL_PATH/build/badvpn-tun2socks"

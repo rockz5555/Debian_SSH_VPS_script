@@ -91,17 +91,16 @@ apt-get install -y openssl >/dev/null 2>/dev/null
 apt-get install -y build-essential >/dev/null 2>/dev/null
 apt-get install -y cmake >/dev/null 2>/dev/null
 
-# compiling and installing badvpn
-wget https://github.com/rockz5555/Debian_SSH_VPS_script/raw/main/badvpn/badvpn-1.999.128.tar.bz2 -o /dev/null
-tar -xf badvpn-1.999.128.tar.bz2
-mkdir /etc/badvpn-install
-cd /etc/badvpn-install
-cmake ~/badvpn-1.999.128 -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1 >/dev/null 2>/dev/null
-make install
-clear
-rm -rf /etc/badvpn-install
-cd
-rm -rf badvpn.sh badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
+###### BADVPN INSTALLER ######
+# Download the setup_badvpn.sh script using wget
+wget -O setup_badvpn.sh "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/badvpn.sh"
+
+# Make the downloaded script executable
+chmod +x setup_badvpn.sh
+
+# Execute the setup_badvpn.sh script
+./setup_badvpn.sh
+###############################
 
 # Stunnel installing
 apt-get install stunnel4 -y
@@ -121,17 +120,6 @@ rm *.deb
 rm *.asc
 rm *.zip
 rm ddos*
-
-###### BADVPN INSTALLER ######
-# Download the setup_badvpn.sh script using wget
-wget -O setup_badvpn.sh "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/badvpn.sh"
-
-# Make the downloaded script executable
-chmod +x setup_badvpn.sh
-
-# Execute the setup_badvpn.sh script
-./setup_badvpn.sh
-###############################
 
 #speedtest
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
