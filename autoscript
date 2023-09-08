@@ -122,6 +122,17 @@ rm *.asc
 rm *.zip
 rm ddos*
 
+###### BADVPN INSTALLER ######
+# Download the setup_badvpn.sh script using wget
+wget -O setup_badvpn.sh "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/badvpn.sh"
+
+# Make the downloaded script executable
+chmod +x setup_badvpn.sh
+
+# Execute the setup_badvpn.sh script
+./setup_badvpn.sh
+###############################
+
 #speedtest
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt-get install speedtest
