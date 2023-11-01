@@ -23,8 +23,8 @@ apt-get upgrade -y
 clear
 
 # downloading menu
-wget -O /usr/local/bin/menu "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/menu"
-chmod +x /usr/local/bin/menu
+wget -O /usr/local/bin/menussh "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/menu"
+chmod +x /usr/local/bin/menussh
 
 #setting the time zone to Sri Lankan (GTM +0530)
 ln -fs /usr/share/zoneinfo/Asia/Colombo /etc/localtime
@@ -58,11 +58,11 @@ clear
 # ssh
 sed -i 's/#Banner/Banner/g' /etc/ssh/sshd_config
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-wget -O /etc/issue.net "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/issue.net"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/issue.net"
 
 # dropbear
 apt-get -y install dropbear
-wget -O /etc/default/dropbear "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/dropbear"
+wget -O /etc/default/dropbear "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/dropbear"
 echo "/bin/false" >>/etc/shells
 echo "/usr/sbin/nologin" >>/etc/shells
 /etc/init.d/dropbear restart
@@ -73,11 +73,11 @@ myint=$(ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}')
 
 # squid3
 apt-get -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/squid.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/squid.conf"
 sed -i "s/ipserver/$myip/g" /etc/squid/squid.conf
 
 # Setting Server
-wget -O /etc/rc.local "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/rc.local"
+wget -O /etc/rc.local "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/rc.local"
 chmod +x /etc/rc.local
 
 #getting things ready to compile badvpn
@@ -93,7 +93,7 @@ apt-get install -y cmake >/dev/null 2>/dev/null
 
 ###### BADVPN INSTALLER ######
 # Download the setup_badvpn.sh script using wget
-wget -O setup_badvpn.sh "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/badvpn.sh"
+wget -O setup_badvpn.sh "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/badvpn.sh"
 
 # Make the downloaded script executable
 chmod +x setup_badvpn.sh
@@ -104,7 +104,7 @@ chmod +x setup_badvpn.sh
 
 # Stunnel installing
 apt-get install stunnel4 -y
-wget -P /etc/stunnel/ "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/main/files/stunnel.conf"
+wget -P /etc/stunnel/ "https://raw.githubusercontent.com/rockz5555/Debian_SSH_VPS_script/v2/files/stunnel.conf"
 # Creating stunnel certifcate using openssl
 openssl req -new -x509 -days 9999 -nodes -subj "/C=US/ST=SBH/L=TWU/O=Nijoo/OU=Nijoo/CN=Nijoo" -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem &>/dev/null
 ##  > /dev/null 2>&1
