@@ -13,7 +13,7 @@ To install:
 
     OpenSSH Port : 22
     Dropbear Port: 442 555
-    Stunnel Port : 443 445
+    Stunnel Port : 143 445
     Squid Port : 3128 8000 8080
     Badvpn Port : 7300
 
